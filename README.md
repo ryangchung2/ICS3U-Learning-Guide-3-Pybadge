@@ -1,5 +1,5 @@
 # Ghost Dodge!
-This is a repository for the game "Ghost Dodge!", made for the third learning guide of the ICS3U course
+This is a repository for the game "Ghost Dodge!", made for the third learning guide of the ICS3U course.
 Each lesson folder includes a different version of the code, corresponding to the lesson in the website below:
 https://sites.google.com/mths.ca/ics3u-learningguide/home
 
