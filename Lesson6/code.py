@@ -33,8 +33,8 @@ def game_scene():
 
     # SOUND
     # Sound library
-    # Shooting sound
-    pew_sound = open("sword_swoosh.wav", 'rb')
+    # Hitting sound
+    sword_swoosh_sound = open("sword_swoosh.wav", 'rb')
 
     # Sound setup
     sound = ugame.audio
@@ -135,7 +135,7 @@ def game_scene():
                 if sword_hits[sword_number].x < 0:
                     sword_hits[sword_number].move(character.x, character.y)
                     sword_direction[sword_number] = direction
-                    sound.play(pew_sound)
+                    sound.play(sword_swoosh_sound)
                     break
 
         # SWORD SWOOSH MOVEMENT
