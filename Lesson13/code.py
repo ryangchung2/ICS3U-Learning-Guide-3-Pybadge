@@ -189,7 +189,7 @@ def game_scene():
     # SOUND
     # Sound library
     # Shooting sound
-    pew_sound = open("sword_swoosh.wav", 'rb')
+    sword_swoosh_sound = open("sword_swoosh.wav", 'rb')
     # Sword hitting ghosts
     crash_sound = open("ghost_hit.wav", 'rb')
     # Ghosts hitting character
@@ -301,13 +301,13 @@ def game_scene():
             character.set_frame(5, 2)
             direction = "Down"
 
-        # Shoot with sound
+        # Hit with sound
         if a_button == constants.button_state["button_just_pressed"]:
             for sword_number in range(len(sword_hits)):
                 if sword_hits[sword_number].x < 0:
                     sword_hits[sword_number].move(character.x, character.y)
                     sword_direction[sword_number] = direction
-                    sound.play(pew_sound)
+                    sound.play(sword_swoosh_sound)
                     break
 
         # SET DIFFICULTY
