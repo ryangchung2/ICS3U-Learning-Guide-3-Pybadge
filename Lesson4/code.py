@@ -2,7 +2,7 @@
 
 # Created by Ryan Chung Kam Chung
 # Created in January 2021
-# Final version of Ghost Dodge!
+# Making the character move
 
 
 # Libraries that will enable us to render and stage assets
