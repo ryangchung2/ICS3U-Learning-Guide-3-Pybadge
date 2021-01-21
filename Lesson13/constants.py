@@ -28,10 +28,10 @@ button_state = {
     "button_released": "released"
 }
 
-# Alien constants
+# Ghost constants
 TOTAL_NUMBER_OF_GHOSTS = 1
 
-# Bullet constants
+# Sword constants
 SWORD_SPEED = 2
 TOTAL_NUMBER_OF_SWORD_HITS = 1
 
