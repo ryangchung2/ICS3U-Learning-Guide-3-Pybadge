@@ -32,8 +32,8 @@ button_state = {
 TOTAL_NUMBER_OF_GHOSTS = 1
 
 # Bullet constants
-BULLET_SPEED = 2
-TOTAL_NUMBER_OF_BULLETS = 1
+SWORD_SPEED = 2
+TOTAL_NUMBER_OF_SWORD_HITS = 1
 
 # When a bullet goes back to "staging"
 OFF_SCREEN_X = -1 * SPRITE_SIZE
