@@ -2,7 +2,7 @@
 
 # Created by Ryan Chung Kam Chung
 # Created in January 2021
-# Adding shooting and sound
+# Setting background
 
 
 # Libraries that will enable us to render and stage assets
