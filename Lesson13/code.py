@@ -340,14 +340,14 @@ def game_scene():
             # if they are too far from the character
             # Right
             if sword_hits[sword_number].x > (character.x
-                                           + 2 * constants.SPRITE_SIZE):
+                                             + 2 * constants.SPRITE_SIZE):
                 sword_hits[sword_number].move(constants.OFF_SCREEN_X,
-                                            constants.OFF_SCREEN_Y)
+                                              constants.OFF_SCREEN_Y)
             # Right
             if sword_hits[sword_number].x < (character.x
-                                           - 2 * constants.SPRITE_SIZE):
+                                             - 2 * constants.SPRITE_SIZE):
                 sword_hits[sword_number].move(constants.OFF_SCREEN_X,
-                                            constants.OFF_SCREEN_Y)
+                                              constants.OFF_SCREEN_Y)
             # Down
             if sword_hits[sword_number].y > (character.y
                                              + 2 * constants.SPRITE_SIZE):
