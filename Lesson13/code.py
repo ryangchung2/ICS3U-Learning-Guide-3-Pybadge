@@ -210,16 +210,16 @@ def game_scene():
     # Character sprite being displayed
     character = stage.Sprite(game_image_bank, 5, 75, 66)
 
-    # Creates bullets
-    bullets = []
-    bullet_direction = []
-    for bullet_number in range(constants.TOTAL_NUMBER_OF_BULLETS):
-        a_single_bullet = stage.Sprite(game_image_bank, 10,
+    # Creates sword swoops
+    sword_hits = []
+    sword_direction = []
+    for sword_number in range(constants.TOTAL_NUMBER_OF_SWORD_HITS):
+        a_single_hit = stage.Sprite(game_image_bank, 10,
                                        constants.OFF_SCREEN_X,
                                        constants.OFF_SCREEN_Y)
-        bullets.append(a_single_bullet)
+        sword_hits.append(a_single_hit)
         # Sets bullet direction
-        bullet_direction.append("")
+        sword_direction.append("")
         direction = "Up"
 
     # Creates ghosts
@@ -240,7 +240,7 @@ def game_scene():
     # Sets frame rate to 60fps
     game = stage.Stage(ugame.display, constants.FPS)
     # Sets sprite layers and show up in order
-    game.layers = ([score_text] + bullets + [character] + ghosts
+    game.layers = ([score_text] + sword_hits + [character] + ghosts
                    + [game_background])
     # Renders all sprites, only once
     game.render_block()
@@ -251,7 +251,7 @@ def game_scene():
         # USER MOVEMENT + SHOOTING
         keys = ugame.buttons.get_pressed()
 
-        # Button states to fire
+        # Button states to use sword
         if keys & ugame.K_X != 0:
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
@@ -303,10 +303,10 @@ def game_scene():
 
         # Shoot with sound
         if a_button == constants.button_state["button_just_pressed"]:
-            for bullet_number in range(len(bullets)):
-                if bullets[bullet_number].x < 0:
-                    bullets[bullet_number].move(character.x, character.y)
-                    bullet_direction[bullet_number] = direction
+            for sword_number in range(len(sword_hits)):
+                if sword_hits[sword_number].x < 0:
+                    sword_hits[sword_number].move(character.x, character.y)
+                    sword_direction[sword_number] = direction
                     sound.play(pew_sound)
                     break
 
@@ -315,49 +315,49 @@ def game_scene():
         if score % 10 == 0:
             difficulty += 0.025
 
-        # BULLET MOVEMENT
-        # When bullets get shot, check if they are off the screen.
-        for bullet_number in range(len(bullets)):
-            if bullets[bullet_number].x > -1 * constants.SPRITE_SIZE:
-                if bullet_direction[bullet_number] == "Up":
-                    bullets[bullet_number].move(bullets[bullet_number].x,
-                                                bullets[bullet_number].y
-                                                - constants.BULLET_SPEED)
-                if bullet_direction[bullet_number] == "Down":
-                    bullets[bullet_number].move(bullets[bullet_number].x,
-                                                bullets[bullet_number].y
-                                                + constants.BULLET_SPEED)
-                if bullet_direction[bullet_number] == "Left":
-                    bullets[bullet_number].move(bullets[bullet_number].x
-                                                - constants.BULLET_SPEED,
-                                                bullets[bullet_number].y)
-                if bullet_direction[bullet_number] == "Right":
-                    bullets[bullet_number].move(bullets[bullet_number].x
-                                                + constants.BULLET_SPEED,
-                                                bullets[bullet_number].y)
+        # SWORD SWOOSH MOVEMENT
+        # When sword hits get used, check the direction for movement.
+        for sword_number in range(len(sword_hits)):
+            if sword_hits[sword_number].x > -1 * constants.SPRITE_SIZE:
+                if sword_direction[sword_number] == "Up":
+                    sword_hits[sword_number].move(sword_hits[sword_number].x,
+                                                  sword_hits[sword_number].y
+                                                  - constants.SWORD_SPEED)
+                if sword_direction[sword_number] == "Down":
+                    sword_hits[sword_number].move(sword_hits[sword_number].x,
+                                                  sword_hits[sword_number].y
+                                                  + constants.SWORD_SPEED)
+                if sword_direction[sword_number] == "Left":
+                    sword_hits[sword_number].move(sword_hits[sword_number].x
+                                                  - constants.SWORD_SPEED,
+                                                  sword_hits[sword_number].y)
+                if sword_direction[sword_number] == "Right":
+                    sword_hits[sword_number].move(sword_hits[sword_number].x
+                                                  + constants.SWORD_SPEED,
+                                                  sword_hits[sword_number].y)
 
-            # Move back bullets to "staging"
+            # Move back sword hits to "staging"
             # if they are too far from the character
             # Right
-            if bullets[bullet_number].x > (character.x
+            if sword_hits[sword_number].x > (character.x
                                            + 2 * constants.SPRITE_SIZE):
-                bullets[bullet_number].move(constants.OFF_SCREEN_X,
+                sword_hits[sword_number].move(constants.OFF_SCREEN_X,
                                             constants.OFF_SCREEN_Y)
             # Right
-            if bullets[bullet_number].x < (character.x
+            if sword_hits[sword_number].x < (character.x
                                            - 2 * constants.SPRITE_SIZE):
-                bullets[bullet_number].move(constants.OFF_SCREEN_X,
+                sword_hits[sword_number].move(constants.OFF_SCREEN_X,
                                             constants.OFF_SCREEN_Y)
             # Down
-            if bullets[bullet_number].y > (character.y
-                                           + 2 * constants.SPRITE_SIZE):
-                bullets[bullet_number].move(constants.OFF_SCREEN_X,
-                                            constants.OFF_SCREEN_Y)
+            if sword_hits[sword_number].y > (character.y
+                                             + 2 * constants.SPRITE_SIZE):
+                sword_hits[sword_number].move(constants.OFF_SCREEN_X,
+                                              constants.OFF_SCREEN_Y)
             # Up
-            if bullets[bullet_number].y < (character.y
-                                           - 2 * constants.SPRITE_SIZE):
-                bullets[bullet_number].move(constants.OFF_SCREEN_X,
-                                            constants.OFF_SCREEN_Y)
+            if sword_hits[sword_number].y < (character.y
+                                             - 2 * constants.SPRITE_SIZE):
+                sword_hits[sword_number].move(constants.OFF_SCREEN_X,
+                                              constants.OFF_SCREEN_Y)
 
         # GHOST MOVEMENT
         # Ghost's movement towards character
@@ -394,22 +394,22 @@ def game_scene():
 
         # HIT COLLISION
         # Bullets hitting ghosts
-        for bullet_number in range(len(bullets)):
-            if bullets[bullet_number].x > 0:
+        for sword_number in range(len(sword_hits)):
+            if sword_hits[sword_number].x > 0:
                 for ghost_number in range(len(ghosts)):
                     if ghosts[ghost_number].x > 0:
-                        if stage.collide(bullets[bullet_number].x + 6,
-                                         bullets[bullet_number].y + 2,
-                                         bullets[bullet_number].x + 11,
-                                         bullets[bullet_number].y + 12,
+                        if stage.collide(sword_hits[sword_number].x + 6,
+                                         sword_hits[sword_number].y + 2,
+                                         sword_hits[sword_number].x + 11,
+                                         sword_hits[sword_number].y + 12,
                                          ghosts[ghost_number].x + 1,
                                          ghosts[ghost_number].y,
                                          ghosts[ghost_number].x + 15,
                                          ghosts[ghost_number].y + 15):
                             ghosts[ghost_number].move(constants.OFF_SCREEN_X,
                                                       constants.OFF_SCREEN_Y)
-                            bullets[bullet_number].move(constants.OFF_SCREEN_X,
-                                                        constants.OFF_SCREEN_Y)
+                            sword_hits[sword_number].move(constants.OFF_SCREEN_X,
+                                                          constants.OFF_SCREEN_Y)
                             sound.stop()
                             sound.play(boom_sound)
                             show_ghost()
@@ -437,7 +437,7 @@ def game_scene():
 
         # RENDER AND REDRAW
         # Renders and redraws the sprites that move
-        game.render_sprites(ghosts + bullets + [character])
+        game.render_sprites(ghosts + sword_hits + [character])
         # Waits until refresh rate finishes
         game.tick()
 
