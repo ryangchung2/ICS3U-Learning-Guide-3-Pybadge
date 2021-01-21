@@ -47,7 +47,7 @@ def game_scene():
     # GAME LOOP
     while True:
 
-        # USER MOVEMENT + SHOOTING
+        # USER MOVEMENT + HITTING
         keys = ugame.buttons.get_pressed()
 
         if keys & ugame.K_RIGHT:
