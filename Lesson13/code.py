@@ -189,11 +189,11 @@ def game_scene():
     # SOUND
     # Sound library
     # Shooting sound
-    pew_sound = open("pew.wav", 'rb')
-    # Bullets hitting ghosts
-    crash_sound = open("crash.wav", 'rb')
+    pew_sound = open("sword_swoosh.wav", 'rb')
+    # Sword hitting ghosts
+    crash_sound = open("ghost_hit.wav", 'rb')
     # Ghosts hitting character
-    boom_sound = open("boom.wav", 'rb')
+    boom_sound = open("character_hit.wav", 'rb')
 
     # Sound setup
     sound = ugame.audio
