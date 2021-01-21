@@ -9,8 +9,6 @@
 import ugame
 import stage
 import random
-import supervisor
-import time
 
 # Constants file
 import constants
