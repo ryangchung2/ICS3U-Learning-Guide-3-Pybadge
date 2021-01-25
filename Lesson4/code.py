@@ -49,7 +49,6 @@ def game_scene():
         # USER MOVEMENT
         keys = ugame.buttons.get_pressed()
 
-        # Button states to fire
         if keys & ugame.K_RIGHT:
             # Move right
             character.move(character.x + 1, character.y)
