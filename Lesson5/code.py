@@ -58,7 +58,7 @@ def game_scene():
             else:
                 character.move(constants.SCREEN_X - 2 * constants.SPRITE_SIZE,
                                character.y)
-            character.set_frame(5, 1)
+            character.set_frame(2, 0)
         if keys & ugame.K_LEFT:
             # Move left with constraints of the left border
             if character.x >= constants.SCREEN_X - 9 * constants.SPRITE_SIZE:
@@ -66,7 +66,7 @@ def game_scene():
                                character.y)
             else:
                 character.move(constants.SPRITE_SIZE, character.y)
-            character.set_frame(5, 3)
+            character.set_frame(2, 4)
         if keys & ugame.K_UP:
             # Moves down with constraints of the ceiling
             if character.y >= constants.SPRITE_SIZE:
@@ -74,7 +74,7 @@ def game_scene():
                                character.y - constants.SPRITE_MOVEMENT_SPEED)
             else:
                 character.move(character.x, constants.SPRITE_SIZE)
-            character.set_frame(5, 0)
+            character.set_frame(3, 0)
         if keys & ugame.K_DOWN:
             # Moves down with constraints of the ground
             if character.y <= constants.SCREEN_Y - 2 * constants.SPRITE_SIZE:
@@ -83,7 +83,7 @@ def game_scene():
             else:
                 character.move(character.x,
                                constants.SCREEN_Y - 2 * constants.SPRITE_SIZE)
-            character.set_frame(5, 2)
+            character.set_frame(4, 0)
 
         # RENDER AND REDRAW
         # Renders and redraws the sprites that move
