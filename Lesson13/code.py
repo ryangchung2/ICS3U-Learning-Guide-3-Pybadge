@@ -214,7 +214,7 @@ def game_scene():
     sword_hits = []
     sword_direction = []
     for sword_number in range(constants.TOTAL_NUMBER_OF_SWORD_HITS):
-        a_single_hit = stage.Sprite(game_image_bank, 10,
+        a_single_hit = stage.Sprite(game_image_bank, 6,
                                        constants.OFF_SCREEN_X,
                                        constants.OFF_SCREEN_Y)
         sword_hits.append(a_single_hit)
@@ -225,7 +225,7 @@ def game_scene():
     # Creates ghosts
     ghosts = []
     for ghost_number in range(constants.TOTAL_NUMBER_OF_GHOSTS):
-        a_single_ghost = stage.Sprite(game_image_bank, 9,
+        a_single_ghost = stage.Sprite(game_image_bank, 7,
                                       constants.OFF_SCREEN_X,
                                       constants.OFF_SCREEN_Y)
         ghosts.append(a_single_ghost)
