@@ -21,7 +21,7 @@ def splash_scene():
 
     # SOUND
     # Sound library
-    coin_sound = open("coin.wav", 'rb')
+    splash_sound = open("splash_effect.wav", 'rb')
 
     # Sound setup
     sound = ugame.audio
@@ -31,7 +31,7 @@ def splash_scene():
     sound.mute(False)
 
     # Play coin sound
-    sound.play(coin_sound)
+    sound.play(splash_sound)
 
     # IMAGE BANK
     splash_image_bank = stage.Bank.from_bmp16("splash_over_image_bank.bmp")
@@ -40,35 +40,17 @@ def splash_scene():
     splash_background = stage.Grid(splash_image_bank, constants.SCREEN_X,
                                    constants.SCREEN_Y)
 
-    # used this program to split the image into tile:
-    #   https://ezgif.com/sprite-cutter/ezgif-5-818cdbcc3f66.png
-    splash_background.tile(2, 2, 0)  # blank white
+    # Changing the tiles in certain coordinates to make a splash screen
     splash_background.tile(3, 2, 1)
     splash_background.tile(4, 2, 2)
     splash_background.tile(5, 2, 3)
     splash_background.tile(6, 2, 4)
-    splash_background.tile(7, 2, 0)  # blank white
 
-    splash_background.tile(2, 3, 0)  # blank white
-    splash_background.tile(3, 3, 5)
-    splash_background.tile(4, 3, 6)
-    splash_background.tile(5, 3, 7)
-    splash_background.tile(6, 3, 8)
-    splash_background.tile(7, 3, 0)  # blank white
+    splash_background.tile(4, 3, 5)
+    splash_background.tile(5, 3, 6)
 
-    splash_background.tile(2, 4, 0)  # blank white
-    splash_background.tile(3, 4, 9)
-    splash_background.tile(4, 4, 10)
-    splash_background.tile(5, 4, 11)
-    splash_background.tile(6, 4, 12)
-    splash_background.tile(7, 4, 0)  # blank white
-
-    splash_background.tile(2, 5, 0)  # blank white
-    splash_background.tile(3, 5, 0)
-    splash_background.tile(4, 5, 13)
-    splash_background.tile(5, 5, 14)
-    splash_background.tile(6, 5, 0)
-    splash_background.tile(7, 5, 0)  # blank white
+    splash_background.tile(4, 4, 7)
+    splash_background.tile(5, 4, 8)
 
     # RENDER AND STAGING
     # Creates stage and sets it to 60fps
@@ -190,10 +172,10 @@ def game_scene():
     # Sound library
     # Shooting sound
     sword_swoosh_sound = open("sword_swoosh.wav", 'rb')
-    # Sword hitting ghosts
-    crash_sound = open("ghost_hit.wav", 'rb')
     # Ghosts hitting character
-    boom_sound = open("character_hit.wav", 'rb')
+    character_hit_sound = open("character_hit.wav", 'rb')
+    # Sword hitting ghosts
+    ghost_hit_sound = open("ghost_hit.wav", 'rb')
 
     # Sound setup
     sound = ugame.audio
@@ -208,13 +190,13 @@ def game_scene():
 
     # SPRITES CREATION
     # Character sprite being displayed
-    character = stage.Sprite(game_image_bank, 5, 75, 66)
+    character = stage.Sprite(game_image_bank, 3, 75, 66)
 
     # Creates sword swoops
     sword_hits = []
     sword_direction = []
     for sword_number in range(constants.TOTAL_NUMBER_OF_SWORD_HITS):
-        a_single_hit = stage.Sprite(game_image_bank, 6,
+        a_single_hit = stage.Sprite(game_image_bank, 5,
                                        constants.OFF_SCREEN_X,
                                        constants.OFF_SCREEN_Y)
         sword_hits.append(a_single_hit)
@@ -225,7 +207,7 @@ def game_scene():
     # Creates ghosts
     ghosts = []
     for ghost_number in range(constants.TOTAL_NUMBER_OF_GHOSTS):
-        a_single_ghost = stage.Sprite(game_image_bank, 7,
+        a_single_ghost = stage.Sprite(game_image_bank, 6,
                                       constants.OFF_SCREEN_X,
                                       constants.OFF_SCREEN_Y)
         ghosts.append(a_single_ghost)
@@ -323,18 +305,22 @@ def game_scene():
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   - constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 0)
                 if sword_direction[sword_number] == "Down":
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   + constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 2)
                 if sword_direction[sword_number] == "Left":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   - constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 3)
                 if sword_direction[sword_number] == "Right":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   + constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 1)
 
             # Move back sword hits to "staging"
             # if they are too far from the character
@@ -393,25 +379,25 @@ def game_scene():
                                               ghosts[ghost_number].y)
 
         # HIT COLLISION
-        # Bullets hitting ghosts
+        # Sword hitting ghosts
         for sword_number in range(len(sword_hits)):
             if sword_hits[sword_number].x > 0:
                 for ghost_number in range(len(ghosts)):
                     if ghosts[ghost_number].x > 0:
-                        if stage.collide(sword_hits[sword_number].x + 6,
-                                         sword_hits[sword_number].y + 2,
-                                         sword_hits[sword_number].x + 11,
-                                         sword_hits[sword_number].y + 12,
-                                         ghosts[ghost_number].x + 1,
+                        if stage.collide(sword_hits[sword_number].x + 1,
+                                         sword_hits[sword_number].y,
+                                         sword_hits[sword_number].x + 15,
+                                         sword_hits[sword_number].y + 9,
+                                         ghosts[ghost_number].x + 3,
                                          ghosts[ghost_number].y,
-                                         ghosts[ghost_number].x + 15,
-                                         ghosts[ghost_number].y + 15):
+                                         ghosts[ghost_number].x + 13,
+                                         ghosts[ghost_number].y + 13):
                             ghosts[ghost_number].move(constants.OFF_SCREEN_X,
                                                       constants.OFF_SCREEN_Y)
                             sword_hits[sword_number].move(constants.OFF_SCREEN_X,
                                                           constants.OFF_SCREEN_Y)
                             sound.stop()
-                            sound.play(boom_sound)
+                            sound.play(ghost_hit_sound)
                             show_ghost()
                             score += 1
                             score_text.clear()
@@ -422,16 +408,16 @@ def game_scene():
         # Ghosts hitting the character
         for ghost_number in range(len(ghosts)):
             if ghosts[ghost_number].x > 0:
-                if stage.collide(ghosts[ghost_number].x + 1,
+                if stage.collide(ghosts[ghost_number].x + 3,
                                  ghosts[ghost_number].y,
-                                 ghosts[ghost_number].x + 15,
-                                 ghosts[ghost_number].y + 15,
+                                 ghosts[ghost_number].x + 13,
+                                 ghosts[ghost_number].y + 13,
                                  character.x,
-                                 character.y,
+                                 character.y + 1,
                                  character.x + 15,
                                  character.y + 15):
                     sound.stop()
-                    sound.play(crash_sound)
+                    sound.play(character_hit_sound)
                     time.sleep(1.0)
                     game_over_scene(score)
 
@@ -473,8 +459,8 @@ def game_over_scene(final_score):
 
     text3 = stage.Text(width=29, height=14, font=None,
                        palette=constants.PALETTE, buffer=None)
-    text3.move(32, 110)
-    text3.text("PRESS SELECT")
+    text3.move(35, 110)
+    text3.text("PRESS START")
     text.append(text3)
 
     # STAGE AND RENDER
