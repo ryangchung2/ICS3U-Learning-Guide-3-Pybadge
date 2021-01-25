@@ -33,7 +33,7 @@ def game_scene():
 
     # SPRITES CREATION
     # Character sprite being displayed
-    character = stage.Sprite(game_image_bank, 5, 75, 66)
+    character = stage.Sprite(game_image_bank, 2, 75, 66)
 
     # STAGE AND RENDER
     # Creates a stage for the background
