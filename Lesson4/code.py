@@ -53,19 +53,19 @@ def game_scene():
         if keys & ugame.K_RIGHT:
             # Move right
             character.move(character.x + 1, character.y)
-            character.set_frame(5, 1)
+            character.set_frame(2, 1)
         if keys & ugame.K_LEFT:
             # Move left
             character.move(character.x - 1, character.y)
-            character.set_frame(5, 3)
+            character.set_frame(2, 4)
         if keys & ugame.K_UP:
             # Move up
             character.move(character.x, character.y - 1)
-            character.set_frame(5, 0)
+            character.set_frame(3, 0)
         if keys & ugame.K_DOWN:
             # Move down
             character.move(character.x, character.y + 1)
-            character.set_frame(5, 2)
+            character.set_frame(4, 0)
 
         # RENDER AND REDRAW
         # Renders and redraws the sprites that move
