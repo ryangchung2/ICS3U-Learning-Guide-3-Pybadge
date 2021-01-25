@@ -298,7 +298,7 @@ def game_scene():
             else:
                 character.move(character.x,
                                constants.SCREEN_Y - 2 * constants.SPRITE_SIZE)
-            character.set_frame(3, 0)
+            character.set_frame(4, 0)
             direction = "Down"
 
         # Hit with sound
