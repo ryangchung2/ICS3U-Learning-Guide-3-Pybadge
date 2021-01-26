@@ -49,13 +49,13 @@ def game_scene():
 
     # SPRITES CREATION
     # Character sprite being displayed
-    character = stage.Sprite(game_image_bank, 5, 75, 66)
+    character = stage.Sprite(game_image_bank, 2, 75, 66)
 
     # Creates sword swoops
     sword_hits = []
     sword_direction = []
     for sword_number in range(constants.TOTAL_NUMBER_OF_SWORD_HITS):
-        a_single_hit = stage.Sprite(game_image_bank, 10,
+        a_single_hit = stage.Sprite(game_image_bank, 5,
                                        constants.OFF_SCREEN_X,
                                        constants.OFF_SCREEN_Y)
         sword_hits.append(a_single_hit)
