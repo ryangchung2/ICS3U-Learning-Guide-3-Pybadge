@@ -68,8 +68,7 @@ def game_scene():
     # Sets frame rate to 60fps
     game = stage.Stage(ugame.display, constants.FPS)
     # Sets sprite layers and show up in order
-    game.layers = (sword_hits + [character]
-                   + [game_background])
+    game.layers = sword_hits + [character] + [game_background]
     # Renders all sprites, only once
     game.render_block()
 
