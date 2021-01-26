@@ -145,18 +145,22 @@ def game_scene():
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   - constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 0)
                 if sword_direction[sword_number] == "Down":
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   + constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 2)
                 if sword_direction[sword_number] == "Left":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   - constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 3)
                 if sword_direction[sword_number] == "Right":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   + constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 1)
 
             # Move back sword hits to "staging"
             # if they are too far from the character
