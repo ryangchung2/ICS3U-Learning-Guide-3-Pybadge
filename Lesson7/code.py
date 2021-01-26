@@ -105,8 +105,7 @@ def game_scene():
     # Sets frame rate to 60fps
     game = stage.Stage(ugame.display, constants.FPS)
     # Sets sprite layers and show up in order
-    game.layers = (sword_hits + [character] + ghosts
-                   + [game_background])
+    game.layers = (sword_hits + [character] + ghosts + [game_background])
     # Renders all sprites, only once
     game.render_block()
 
@@ -163,7 +162,7 @@ def game_scene():
             else:
                 character.move(character.x,
                                constants.SCREEN_Y - 2 * constants.SPRITE_SIZE)
-            character.set_frame(4, 2)
+            character.set_frame(4, 0)
             direction = "Down"
 
         # Hit with sound
@@ -183,18 +182,22 @@ def game_scene():
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   - constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 0)
                 if sword_direction[sword_number] == "Down":
                     sword_hits[sword_number].move(sword_hits[sword_number].x,
                                                   sword_hits[sword_number].y
                                                   + constants.SWORD_SPEED)
+                    sword_hits[sword_number].set_frame(5, 2)
                 if sword_direction[sword_number] == "Left":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   - constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 3)
                 if sword_direction[sword_number] == "Right":
                     sword_hits[sword_number].move(sword_hits[sword_number].x
                                                   + constants.SWORD_SPEED,
                                                   sword_hits[sword_number].y)
+                    sword_hits[sword_number].set_frame(5, 1)
 
             # Move back sword hits to "staging"
             # if they are too far from the character
