@@ -2,7 +2,7 @@
 
 # Created by Ryan Chung Kam Chung
 # Created in January 2021
-# Adding game over collision
+# Adding progressive difficulty
 
 
 # Libraries that will enable us to render and stage assets
