@@ -164,7 +164,7 @@ def game_scene():
 
     show_ghost()
 
-    difficulty = 0.5
+    difficulty = 0.25
 
     # STAGE AND RENDER
     # Creates a stage for the background
