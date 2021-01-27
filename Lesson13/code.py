@@ -354,11 +354,13 @@ def game_scene():
                     ghosts[ghost_number].move(ghosts[ghost_number].x
                                               - ghost_speed,
                                               ghosts[ghost_number].y)
+                    ghosts[ghost_number].set_frame(6, 4)
                 # Left of character (horizontal)
                 if ghosts[ghost_number].x < character.x:
                     ghosts[ghost_number].move(ghosts[ghost_number].x
                                               + ghost_speed,
                                               ghosts[ghost_number].y)
+                    ghosts[ghost_number].set_frame(6, 0)
                 # Under character (vertical)
                 if ghosts[ghost_number].y > character.y:
                     ghosts[ghost_number].move(ghosts[ghost_number].x,
