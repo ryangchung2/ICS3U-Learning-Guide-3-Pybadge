@@ -52,7 +52,7 @@ def game_scene():
         if keys & ugame.K_RIGHT:
             # Move right
             character.move(character.x + 1, character.y)
-            character.set_frame(2, 1)
+            character.set_frame(2, 0)
         if keys & ugame.K_LEFT:
             # Move left
             character.move(character.x - 1, character.y)
