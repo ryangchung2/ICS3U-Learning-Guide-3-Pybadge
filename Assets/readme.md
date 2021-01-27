@@ -9,4 +9,6 @@ character_hit.wav comes from: https://drive.google.com/drive/u/0/folders/1HwHIB8
 
 Due to hardware limitations, the PyBadge can only read a specific type of .wav file. If any problems should arise with them, pass them through an audio manipulation software like Audacity and download them onto the PyBadge. This should resolve the issue.
 
+If there are any problems with downloading the files in this repository, here is an alternate download link: https://drive.google.com/drive/folders/1OnE8yAWSUj6ZgOTWDFJgPblmFLzBEb_L?usp=sharing
+
 image_bank_1.bmp and splash_over_image_bank.bmp were made by Ryan Chung Kam Chung
