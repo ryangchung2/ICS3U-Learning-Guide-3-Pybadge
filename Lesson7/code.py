@@ -97,9 +97,6 @@ def game_scene():
 
     show_ghost()
 
-    # DIFFICULTY
-    difficulty = 1
-
     # STAGE AND RENDER
     # Creates a stage for the background
     # Sets frame rate to 60fps
