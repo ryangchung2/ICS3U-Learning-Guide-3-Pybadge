@@ -44,6 +44,6 @@ def game_scene():
     while True:
         pass
 
-# Makes this file run as the main file of the program, and runs menu_scene()
+# Makes this file run as the main file of the program, and runs game_scene()
 if __name__ == "__main__":
     game_scene()
