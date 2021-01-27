@@ -79,7 +79,7 @@ def game_scene():
         keys = ugame.buttons.get_pressed()
 
         # Button states to use sword
-        if keys & ugame.K_X != 0:
+        if keys & ugame.K_O != 0:
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
             elif a_button == constants.button_state["button_just_pressed"]:
