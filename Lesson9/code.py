@@ -2,7 +2,7 @@
 
 # Created by Ryan Chung Kam Chung
 # Created in January 2021
-# Final version of Ghost Dodge!
+# Keeping score
 
 
 # Libraries that will enable us to render and stage assets
@@ -305,6 +305,6 @@ def game_scene():
         game.tick()
 
 
-# Makes this file run as the main file of the program, and runs menu_scene()
+# Makes this file run as the main file of the program, and runs game_scene()
 if __name__ == "__main__":
     game_scene()
